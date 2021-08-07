@@ -1,7 +1,4 @@
 {
-    "APP": {
-        "database": {
-            "mongoUrl": "mongodb://localhost:27017/movies-service"
-        }
-    }
+    "DATABASE_URL": "mongodb://localhost:27017/movies-service",
+    "PORT": ""
 }

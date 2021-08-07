@@ -1,16 +1,31 @@
-import mongoose, { ConnectOptions } from 'mongoose';
+import { connect, ConnectOptions } from 'mongoose';
 import { MovieModel } from "../database/database"
+import generalSettings from "../../config.json"
+
 
 const options: ConnectOptions = {}
 
 export class ListMovieService {
 
-    async execute(){
+    async allMovies(){
 
-        await mongoose.connect("mongodb://localhost:27017/movies-service", options)
+        await connect(generalSettings.DATABASE_URL, options)
 
         const movies = await MovieModel.find()
 
         return movies
+    }
+
+    async byCategory(category: any){
+
+        await connect(generalSettings.DATABASE_URL, options)
+
+        const movieList = await MovieModel.find({ categories: category.category })
+
+        if (!movieList){
+            throw new Error("Can't exists one movie of this category")
+        }
+
+        return movieList
     }
 }

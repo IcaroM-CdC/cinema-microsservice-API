@@ -1,23 +1,23 @@
-import mongoose, { ConnectOptions } from 'mongoose';
+import { ConnectOptions, connect } from 'mongoose';
 import { MovieModel } from "../database/database"
 import { InterfaceMovie } from "../interfaces"
+import generalSettings from "../../config.json"
 
 const options: ConnectOptions = {}
 
 export class CreateMovieService {
 
-    async execute({ id, title, plot, duration, releaseDate, img, categories }: InterfaceMovie){
+    async execute({ title, plot, duration, releaseDate, img, categories }: InterfaceMovie){
 
-        await mongoose.connect("mongodb://localhost:27017/movies-service", options)
+        await connect(generalSettings.DATABASE_URL, options)
 
         const movieAlreadyExists = await MovieModel.findOne({ title })
 
         if (movieAlreadyExists){
-            return "this movie already exists in database"
+            throw new Error("This movie already exists in database")
         }
 
         const movie = new MovieModel({
-            id: id,
             title: title,
             plot: plot,
             duration: duration,

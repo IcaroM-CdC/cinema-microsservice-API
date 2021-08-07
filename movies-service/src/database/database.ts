@@ -3,7 +3,6 @@ import { InterfaceMovie } from "../interfaces"
 
 const movieSchema = new Schema<InterfaceMovie>({
 
-    id: { type: String, required: true },
     title: { type: String, required: true },
     plot: { type: String, required: true },
     duration: { type: Number, required: true },

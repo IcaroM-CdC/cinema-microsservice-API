@@ -6,9 +6,9 @@ export class MoviesController {
 
     async insertMovie(request: Request, response: Response){
 
-        const { id, title, plot, duration, releaseDate, img, categories } = request.body
+        const { title, plot, duration, releaseDate, img, categories } = request.body
         const createMovieService = new CreateMovieService()
-        const newMovie = await createMovieService.execute({id, title, plot, duration, releaseDate, img, categories})
+        const newMovie = await createMovieService.execute({ title, plot, duration, releaseDate, img, categories})
         
         console.log(newMovie)
 
@@ -20,7 +20,20 @@ export class MoviesController {
     async listAllMovies(request: Request, response: Response){
 
         const listMovieService = new ListMovieService()
-        const moviesList = await listMovieService.execute()
+        const moviesList = await listMovieService.allMovies()
+
+        return response.status(200).json({
+            moviesList: moviesList
+        })
+    }
+
+    async listByCategory(request: Request, response: Response){
+
+        console.log(request.headers.category)
+
+        const { category } = request.headers
+        const listMovieService = new ListMovieService()
+        const moviesList = await listMovieService.byCategory({ category })
 
         return response.status(200).json({
             moviesList: moviesList
