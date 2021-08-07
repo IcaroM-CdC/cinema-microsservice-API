@@ -1,0 +1,7 @@
+{
+    "APP": {
+        "database": {
+            "mongoUrl": "mongodb://localhost:27017/movies-service"
+        }
+    }
+}

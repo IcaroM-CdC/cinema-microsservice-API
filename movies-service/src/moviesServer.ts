@@ -10,6 +10,7 @@ const moviesController = new MoviesController
 APP.use(express.json())
 
 APP.post("/movies", moviesController.insertMovie)
+APP.get("/movies/getAllMovies", moviesController.listAllMovies)
 
 
 APP.listen(PORT, function(){
