@@ -13,8 +13,11 @@ APP.use(express.json())
 
 APP.post("/movies", moviesController.insertMovie)
 
+APP.delete("/movies/deleteByTitle", moviesController.deleteMovie)
+
 APP.get("/movies/getAllMovies", moviesController.listAllMovies)
 APP.get("/movies/getByCategory", moviesController.listByCategory)
+APP.get("/movies/getByTitle", moviesController.listByTitle)
 
 APP.use(ErrorHandler)
 

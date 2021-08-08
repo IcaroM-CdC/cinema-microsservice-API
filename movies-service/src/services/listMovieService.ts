@@ -10,7 +10,6 @@ export class ListMovieService {
     async allMovies(){
 
         await connect(generalSettings.DATABASE_URL, options)
-
         const movies = await MovieModel.find()
 
         return movies
@@ -19,7 +18,6 @@ export class ListMovieService {
     async byCategory(category: any){
 
         await connect(generalSettings.DATABASE_URL, options)
-
         const movieList = await MovieModel.find({ categories: category.category })
 
         if (!movieList){
@@ -27,5 +25,17 @@ export class ListMovieService {
         }
 
         return movieList
+    }
+
+    async byTitle(title: any){
+
+        await connect(generalSettings.DATABASE_URL, options)
+        const movie = await MovieModel.findOne(title)
+
+        if (!movie){
+            throw new Error("Movie not found")
+        }
+
+        return movie
     }
 }
