@@ -16,5 +16,4 @@ export class DeleteMovieService {
 
         return movie
     }
-
 }

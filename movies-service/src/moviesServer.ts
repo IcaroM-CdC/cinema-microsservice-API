@@ -7,17 +7,16 @@ import "express-async-errors"
 const APP = express()
 const PORT = 3001 || generalSettings.PORT
 
-const moviesController = new MoviesController
+const moviesController = new MoviesController()
 
 APP.use(express.json())
 
-APP.post("/movies", moviesController.insertMovie)
+APP.post("/movies/create", moviesController.insertMovie)
+APP.delete("/movies/delete", moviesController.deleteMovie)
 
-APP.delete("/movies/deleteByTitle", moviesController.deleteMovie)
-
-APP.get("/movies/getAllMovies", moviesController.listAllMovies)
-APP.get("/movies/getByCategory", moviesController.listByCategory)
-APP.get("/movies/getByTitle", moviesController.listByTitle)
+APP.get("/movies/list/all", moviesController.listAllMovies)
+APP.get("/movies/list/byCategory", moviesController.listByCategory)
+APP.get("/movies/list/byTitle", moviesController.listByTitle)
 
 APP.use(ErrorHandler)
 

@@ -1,4 +1,4 @@
-import { request, Request, Response } from "express"
+import { Request, Response } from "express"
 import { ListMovieService } from "../services/listMovieService"
 import { CreateMovieService } from "../services/createMovieService"
 import { DeleteMovieService } from "../services/deleteMovieService"
@@ -9,9 +9,8 @@ export class MoviesController {
 
         const { title, plot, duration, releaseDate, img, categories } = request.body
         const createMovieService = new CreateMovieService()
-        const newMovie = await createMovieService.execute({ title, plot, duration, releaseDate, img, categories})
+        const newMovie = await createMovieService.execute({ title, plot, duration, releaseDate, img, categories })
         
-
         return response.status(200).json({
             movie: newMovie
         })
@@ -48,7 +47,6 @@ export class MoviesController {
         return response.status(200).json({
             moviesList: moviesList
         })
-
     }
 
     async listByTitle(request: Request, response: Response){
@@ -60,6 +58,5 @@ export class MoviesController {
         return response.status(200).json({
             movie: movie
         })
-
     }
 }
