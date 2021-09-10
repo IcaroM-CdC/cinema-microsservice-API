@@ -12,6 +12,8 @@ export class ListMovieService {
         await connect(generalSettings.DATABASE_URL, options)
         const movies = await MovieModel.find()
 
+        console.log(movies)
+
         return movies
     }
 

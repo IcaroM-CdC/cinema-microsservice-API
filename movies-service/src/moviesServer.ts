@@ -1,4 +1,4 @@
-import express from "express";
+import express from "express"
 import generalSettings from "../config.json"
 import { MoviesController } from "./controllers/moviesController"
 import { ErrorHandler } from "./middlewares/errorHandler"
@@ -17,6 +17,7 @@ APP.delete("/movies/delete", moviesController.deleteMovie)
 APP.get("/movies/list/all", moviesController.listAllMovies)
 APP.get("/movies/list/byCategory", moviesController.listByCategory)
 APP.get("/movies/list/byTitle", moviesController.listByTitle)
+
 
 APP.use(ErrorHandler)
 

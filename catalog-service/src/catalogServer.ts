@@ -14,6 +14,8 @@ APP.use(express.json())
 APP.post("/cinema/create", cinemaController.createCinema)
 APP.post("/cinema/update/add-movie", cinemaController.updateMovieList)
 
+// APP.get("/cinema/")
+
 APP.use(ErrorHandler)
 
 APP.listen(PORT, function(){

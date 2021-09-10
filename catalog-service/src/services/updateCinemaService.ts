@@ -16,7 +16,8 @@ export class UpdateCinemaService {
 
         console.log(movieAlreadyExists)
 
-        if (movieAlreadyExists === []){
+        // Caso o filme não exista no banco de dados, @movieAlreadyExists retornara um vetor vazio
+        if (movieAlreadyExists != []){
             throw new Error("This movie is already registred in this cine")
         }
 

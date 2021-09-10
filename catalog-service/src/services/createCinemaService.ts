@@ -15,7 +15,7 @@ export class CreateCinemaService {
         const cinemaAlreadyExists = await CinemaModel.findOne({ name: name });
 
         if (cinemaAlreadyExists){
-            throw new Error("This movie already exists in database")
+            throw new Error("This cinema already exists in database")
         }
         
         const cinema = new CinemaModel({

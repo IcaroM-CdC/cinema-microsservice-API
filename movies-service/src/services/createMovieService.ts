@@ -28,6 +28,8 @@ export class CreateMovieService {
 
         const newMovie = await movie.save()
         await disconnect()
+
+        console.log("filme criado ====================")
         return newMovie
     }
 }
